@@ -1,4 +1,9 @@
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
+using System.Xml;
+using Microsoft.VisualBasic;
 
 public static class SetsAndMaps
 {
@@ -19,11 +24,40 @@ public static class SetsAndMaps
     /// that there were no duplicates) and therefore should not be returned.
     /// </summary>
     /// <param name="words">An array of 2-character words (lowercase, no duplicates)</param>
+    /// 
+
     public static string[] FindPairs(string[] words)
     {
         // TODO Problem 1 - ADD YOUR CODE HERE
-        return [];
+
+
+        {
+            // TODO Problem 1 - ADD YOUR CODE HERE
+            var twoCharacter = new HashSet<string>();
+            var outcomes = new List<string>();
+
+            foreach (var word in words)
+            {
+                char firstChar = word[0];
+                char secondChar = word[1];
+
+                if (twoCharacter.Contains($"{secondChar}{firstChar}"))
+                {
+                    outcomes.Add($"{secondChar}{firstChar} & {firstChar}{secondChar}");
+                }
+
+                twoCharacter.Add(word);
+            }
+
+            return outcomes.ToArray();
+        }
+
+
+
     }
+
+
+
 
     /// <summary>
     /// Read a census file and summarize the degrees (education)
@@ -42,7 +76,17 @@ public static class SetsAndMaps
         foreach (var line in File.ReadLines(filename))
         {
             var fields = line.Split(",");
-            // TODO Problem 2 - ADD YOUR CODE HERE
+
+            var degree_name = fields[3];
+
+            if (degrees.ContainsKey(degree_name))
+            {
+                degrees[degree_name] += 1;
+            }
+            else
+            {
+                degrees[degree_name] = 1;
+            }
         }
 
         return degrees;
@@ -67,7 +111,35 @@ public static class SetsAndMaps
     public static bool IsAnagram(string word1, string word2)
     {
         // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+
+        // var characters = new Dictionary<string, int>();
+
+
+        word1 = word1.Replace(" ", "").ToLower();
+        word2 = word2.Replace(" ", "").ToLower();
+
+        if (word1.Length != word2.Length)
+            return false;
+
+        var charCount = new Dictionary<char, int>();
+
+        foreach (var letter in word1)
+        {
+            if (charCount.ContainsKey(letter))
+                charCount[letter]++;
+            else
+                charCount[letter] = 1;
+        }
+
+        foreach (var letter in word2)
+        {
+            if (!charCount.ContainsKey(letter) || charCount[letter] == 0)
+                return false;
+
+            charCount[letter]--;
+        }
+
+        return true;
     }
 
     /// <summary>

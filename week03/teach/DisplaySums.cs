@@ -7,6 +7,9 @@
         // 8 2
         // 9 1 
 
+        // 1 - we first create an empty  set 
+        // 2 - 
+
         Console.WriteLine("------------");
         DisplaySumPairs([-20, -15, -10, -5, 0, 5, 10, 15, 20]);
         // Should show something like (order does not matter):

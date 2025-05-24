@@ -33,6 +33,11 @@ public class Maze
     public void MoveLeft()
     {
         // FILL IN CODE
+        if (_mazeMap[(_currX, _currY)][0] == false)
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+        _currX--;
     }
 
     /// <summary>
@@ -42,7 +47,13 @@ public class Maze
     public void MoveRight()
     {
         // FILL IN CODE
+        if (_mazeMap[(_currX, _currY)][1] == false)
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+        _currX++;
     }
+
 
     /// <summary>
     /// Check to see if you can move up.  If you can, then move.  If you
@@ -51,6 +62,11 @@ public class Maze
     public void MoveUp()
     {
         // FILL IN CODE
+        if (_mazeMap[(_currX, _currY)][2] == false)
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+        _currY--;
     }
 
     /// <summary>
@@ -60,6 +76,11 @@ public class Maze
     public void MoveDown()
     {
         // FILL IN CODE
+        if (_mazeMap[(_currX, _currY)][3] == false)
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+        _currY++;
     }
 
     public string GetStatus()
