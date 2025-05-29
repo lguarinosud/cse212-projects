@@ -74,7 +74,9 @@ public class RemoveTailTests
         ll.InsertHead(4);
         ll.InsertHead(5);
 
+
         ll.RemoveTail();
+        //I want to print the content of ll at this point 
         Assert.AreEqual("<LinkedList>{5, 4, 3, 2, 2}", ll.ToString());
 
         ll.RemoveTail();
