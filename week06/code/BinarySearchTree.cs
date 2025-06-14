@@ -11,12 +11,12 @@ public class BinarySearchTree : IEnumerable<int>
     {
         // Create new node
         Node newNode = new(value);
-        // If the list is empty, then point both head and tail to the new node.
+        // If the tree is empty, the new node becomes the root.
         if (_root is null)
         {
             _root = newNode;
         }
-        // If the list is not empty, then only head will be affected.
+        // If the tree is not empty, use the Node class's Insert method.
         else
         {
             _root.Insert(value);
@@ -30,7 +30,7 @@ public class BinarySearchTree : IEnumerable<int>
     /// <returns>true if found, otherwise false</returns>
     public bool Contains(int value)
     {
-        return _root != null && _root.Contains(value);
+        return _root != null && _root.Contains(value); // Check if the tree itself is not empty, if true, use the Contains method
     }
 
     /// <summary>
@@ -81,6 +81,12 @@ public class BinarySearchTree : IEnumerable<int>
     private void TraverseBackward(Node? node, List<int> values)
     {
         // TODO Problem 3
+        if (node is not null)
+        {
+            TraverseBackward(node.Right, values);
+            values.Add(node.Data);
+            TraverseBackward(node.Left, values);
+        }
     }
 
     /// <summary>
@@ -99,8 +105,10 @@ public class BinarySearchTree : IEnumerable<int>
     }
 }
 
-public static class IntArrayExtensionMethods {
-    public static string AsString(this IEnumerable array) {
+public static class IntArrayExtensionMethods
+{
+    public static string AsString(this IEnumerable array)
+    {
         return "<IEnumerable>{" + string.Join(", ", array.Cast<int>()) + "}";
     }
 }

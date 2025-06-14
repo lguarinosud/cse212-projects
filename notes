@@ -1,71 +1,71 @@
-public static string[] FindPairs(string[] words)
-{
-    // TODO Problem 1 - ADD YOUR CODE HERE
-    var twoCharacter = new HashSet<string>();
-    var outcomes = new List<string>();
+// // public static string[] FindPairs(string[] words)
+// {
+//     // TODO Problem 1 - ADD YOUR CODE HERE
+//     var twoCharacter = new HashSet<string>();
+//     var outcomes = new List<string>();
 
-    foreach (var word in words)
-    {
-        char firstChar = word[0];
-        char secondChar = word[1];
+//     foreach (var word in words)
+//     {
+//         char firstChar = word[0];
+//         char secondChar = word[1];
 
-        if (twoCharacter.Contains($"{secondChar}{firstChar}"))
-        {
-            outcomes.Add($"{secondChar}{firstChar} & {firstChar}{secondChar}");
-        }
+//         if (twoCharacter.Contains($"{secondChar}{firstChar}"))
+//         {
+//             outcomes.Add($"{secondChar}{firstChar} & {firstChar}{secondChar}");
+//         }
 
-        twoCharacter.Add(word);
-    }
+//         twoCharacter.Add(word);
+//     }
 
-    return outcomes.ToArray();
-}
-
-
-public static string[] FindPairs(string[] words)
-{
-    // TODO Problem 1 - ADD YOUR CODE HERE
-    var twoCharacter = new HashSet<string>();
-    var outcomes = new List<string>();
-
-    foreach (var word in words)
-    {
-        char firstChar = word[0];
-        char secondChar = word[1];
-
-        if (twoCharacter.Contains($"{secondChar}{firstChar}"))
-        {
-            outcomes.Add($"{secondChar}{firstChar} & {firstChar}{secondChar}");
-        }
-
-        twoCharacter.Add(word);
-    }
-
-    return outcomes.ToArray();
-}
+//     return outcomes.ToArray();
+// }
 
 
+// public static string[] FindPairs(string[] words)
+// {
+//     // TODO Problem 1 - ADD YOUR CODE HERE
+//     var twoCharacter = new HashSet<string>();
+//     var outcomes = new List<string>();
 
-public static string[] FindPairs(string[] words)
-{
-    // TODO Problem 1 - ADD YOUR CODE HERE
-    var seenPairs = new HashSet<(char, char)>();
-    var outcomes = new List<string>();
+//     foreach (var word in words)
+//     {
+//         char firstChar = word[0];
+//         char secondChar = word[1];
 
-    foreach (var word in words)
-    {
-        char firstChar = word[0];
-        char secondChar = word[1];
+//         if (twoCharacter.Contains($"{secondChar}{firstChar}"))
+//         {
+//             outcomes.Add($"{secondChar}{firstChar} & {firstChar}{secondChar}");
+//         }
 
-        // Ensure consistent ordering of characters in the tuple
-        var pair = (firstChar < secondChar) ? (firstChar, secondChar) : (secondChar, firstChar);
+//         twoCharacter.Add(word);
+//     }
 
-        if (seenPairs.Contains((pair.Item2, pair.Item1)))
-        {
-            outcomes.Add($"{pair.Item1}{pair.Item2} & {pair.Item2}{pair.Item1}");
-        }
+//     return outcomes.ToArray();
+// }
 
-        seenPairs.Add(pair);
-    }
 
-    return outcomes.ToArray();
-}
+
+// public static string[] FindPairs(string[] words)
+// {
+//     // TODO Problem 1 - ADD YOUR CODE HERE
+//     var seenPairs = new HashSet<(char, char)>();
+//     var outcomes = new List<string>();
+
+//     foreach (var word in words)
+//     {
+//         char firstChar = word[0];
+//         char secondChar = word[1];
+
+//         // Ensure consistent ordering of characters in the tuple
+//         var pair = (firstChar < secondChar) ? (firstChar, secondChar) : (secondChar, firstChar);
+
+//         if (seenPairs.Contains((pair.Item2, pair.Item1)))
+//         {
+//             outcomes.Add($"{pair.Item1}{pair.Item2} & {pair.Item2}{pair.Item1}");
+//         }
+
+//         seenPairs.Add(pair);
+//     }
+
+//     return outcomes.ToArray();
+// }
